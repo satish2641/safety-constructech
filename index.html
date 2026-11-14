@@ -4933,8 +4933,7 @@ function renderSummary(){const box=$('smKpi');if(!box)return;const m=iso(new Dat
   const k=(n,l)=>'<div><strong>'+n+'</strong>'+esc(l)+'</div>';
   box.innerHTML=k(tb.length,'Toolbox Meetings')+k(rb.length,'RA briefings submitted')+k(swp,'Briefings with SWP sections')+k(workers.size,'Different workers briefed');}
 function showView(v){
-  let wkSel=false;try{wkSel=v==='formfill'&&!!FF&&!!FF.def&&FF.def.id==='walk';}catch(e){}   /* Weekly Safety Checks tab owns the CT-F-18 walk form */
-  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.weekly?!!wkSel:(!wkSel&&b.dataset.v===(v==='formfill'?'forms':v==='rabrief'?'daily':v)))));
+  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.v===(v==='formfill'?'forms':v==='rabrief'?'daily':v))));
   ['dash','job','setup','daily','forms','formfill','permits','register','rabrief','swp','summary','incidents','training','workers','reports','settings'].forEach(n=>{$('v-'+n).hidden=n!==v;$('v-'+n).classList.toggle('printing',n===v);});
   if(v==='register')document.querySelectorAll('#rows textarea').forEach(grow);
   if(v==='daily'||v==='training'||v==='rabrief')sizePads();
